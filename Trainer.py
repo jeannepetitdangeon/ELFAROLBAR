@@ -42,7 +42,7 @@ class NormalizedEnv():
     """ Wrap action """
     
     def __init__(self):
-        self.event_night = True  # Flag to indicate event night
+        self.event_night = np.random.choice([True, False], p=[0.2, 0.8])  
         
     def _action(self, action):
         act_k = (self.action_space.high - self.action_space.low)/ 2.
@@ -59,17 +59,19 @@ class NormalizedEnv():
         rewards = list()
         if self.event_night:
             if crowd == 0:
-                rewards = [-3 for i in range(0,100)]
+                rewards = [-5 for i in range(0,100)]
             elif crowd < 0.5 * optimal_crowd:
-                rewards= [-3 if i ==1 else 0 for i in individual_actions]
+                rewards= [-5 if i ==1 else 0 for i in individual_actions]
             elif crowd < 0.9 * optimal_crowd:
-                rewards = [3 if i ==1 else 0 for i in individual_actions]
+                rewards = [1 if i ==1 else 0 for i in individual_actions]
             elif crowd < 1.1 * optimal_crowd:
-                rewards = [17 if i ==1 else 0 for i in individual_actions]
+                rewards = [15 if i ==1 else 0 for i in individual_actions]
             elif crowd < 1.3 * optimal_crowd:
-                rewards = [3 if i ==1 else 0 for i in individual_actions]
+                rewards = [1 if i ==1 else 0 for i in individual_actions]
             else:
-                rewards = [-3 if i ==1 else 0 for i in individual_actions]    
+                rewards = [-5 if i ==1 else 0 for i in individual_actions]
+            noise = np.random.normal(0, 1, len(rewards))  # Generating noise for each reward
+            rewards = [reward + noise[idx] for idx, reward in enumerate(rewards)]
         else:
             if crowd == 0:
                 rewards = [-5 for i in range(0,100)]
