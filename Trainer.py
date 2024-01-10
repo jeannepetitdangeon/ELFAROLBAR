@@ -57,7 +57,7 @@ class NormalizedEnv():
     def reward(self,individual_actions,optimal_crowd=60):
         crowd = sum(individual_actions)
         rewards = list()
-        if self.event_night==True:
+        if self.event_night:
             if crowd == 0:
                 rewards = [-5 for i in range(0,100)]
             elif crowd < 0.5 * optimal_crowd:
