@@ -1,5 +1,5 @@
 import os
-os.chdir(r'C:\Users\samue\Documents\Université\M2 Unistra\RL\Farol-Bar-Problem-RL--main')
+os.chdir(r"C:\Users\samue\Documents\GitHub\ELFAROLBAR")
 import numpy as np
 
 
@@ -42,7 +42,7 @@ class NormalizedEnv():
     """ Wrap action """
     
     def __init__(self):
-        self.event_night = np.random.choice([True, False], p=[0.2, 0.8])  
+        self.event_night = np.random.choice([True, False], p=[1/7, 6/7])  
         
     def _action(self, action):
         act_k = (self.action_space.high - self.action_space.low)/ 2.
@@ -57,7 +57,7 @@ class NormalizedEnv():
     def reward(self,individual_actions,optimal_crowd=60):
         crowd = sum(individual_actions)
         rewards = list()
-        if self.event_night:
+        if self.event_night==True:
             if crowd == 0:
                 rewards = [-5 for i in range(0,100)]
             elif crowd < 0.5 * optimal_crowd:
@@ -100,11 +100,9 @@ class NormalizedEnv():
                 individual_actions.append(0) # Don't go to the bar 
         new_state = 0 
         rewards_score = self.reward(individual_actions)
-        if np.random.randint(0, 7) == 0:  # Assuming once in every 7 days
-            self.event_night = True
-            rewards_score += 2  # Add 2 to rewards during event night
-        else:
-            self.event_night = False
+        if self.event_night == True:  # Assuming once in every 7 days
+            rewards_score += 2
+        
         done=True
         return new_state, rewards_score,done
 
