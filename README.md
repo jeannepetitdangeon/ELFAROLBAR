@@ -12,11 +12,11 @@
 ## Description
 
 The El Farol Bar problem is about the probability to go to a bar or not following the crowd. We suppose that the capacity of the bar is a hundred people and that the optimum crowd is 60 people. Using a reinforcement learning algorithm, we train an agent to use a good policy to have a maximum reward when going to the bar. 
-We also add an extension, 
+We also add an extension, considering there is an event every seven days, you get another reward, in addition to the first reward function. We will also analyze these results following the kind of reward we add for the event, to see how it affects the behaviour of the agent.  
 
 ## Structure
 
-- In [main](https://github.com/janoudetp/Programmation2023/blob/main/Slides.Rmd), you will find our code. 
+- In [Main](https://github.com/janoudetp/Programmation2023/blob/main/Slides.Rmd), you will find our code. 
 - In [Paper](https://github.com/janoudetp/Programmation2023/blob/main/Programme.ipynb), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
 
 ## Requirements 
@@ -36,7 +36,5 @@ We also add an extension,
 
 ## Auteurs
 
-- Jeanne PETIT-DANGEON : [@janoudetp](https://github.com/janoudetp)
-- Marc FROELICH : [@kemarstreet](https://github.com/kemarstreet)
-- André MIRANDA : [@andre9mirace](https://github.com/andre9mirace)
-
+- Jeanne PETIT-DANGEON : [@jeannepetitdangeon](https://github.com/jeannepetitdangeon)
+- Samuel DOBROSSY : [@SamiGITHUB01](https://github.com/SamiGITHUB01)
