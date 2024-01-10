@@ -16,7 +16,8 @@ We also add an extension, considering there is an event every seven days, you ge
 
 ## Structure
 
-- In [Main](https://github.com/janoudetp/Programmation2023/blob/main/Slides.Rmd), you will find our code. 
+- In [Main](https://github.com/janoudetp/Programmation2023/blob/main/Slides.Rmd), you will find our code.
+- In [Graphs]
 - In [Paper](https://github.com/janoudetp/Programmation2023/blob/main/Programme.ipynb), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
 
 ## Requirements 
