@@ -76,14 +76,39 @@ if len(event_actions) > 0:
 else:
     print("No actions recorded for event nights.")
 
+
+
+
+event_night_count = env.get_event_night_count()
+non_event_night_count = env.get_non_event_night_count()
+event_actions = env.get_event_actions()
+non_event_actions = env.get_non_event_actions()
+
+# Create arrays to represent episode numbers for event and non-event nights
+event_episodes = np.arange(len(event_actions))
+non_event_episodes = np.arange(len(non_event_actions))
+
+# Create scatter plots for event and non-event nights with smaller dots
+plt.scatter(event_episodes, event_actions, marker='o', color='red', label='Event Nights', s=10)
+plt.scatter(non_event_episodes, non_event_actions, marker='x', color='blue', label='Non-Event Nights', s=10)
+
+# Set labels and title
+plt.xlabel('Episode')
+plt.ylabel('Actions')
+plt.title('Scatter Plot of Actions on Event and Non-Event Nights')
+plt.legend()
+
+# Show the plot
+plt.show()
+
 #plt.plot(rewards)
 #plt.plot(avg_rewards)
-plt.plot(actions)
-plt.plot()
-plt.xlabel('Episode')
-plt.ylabel('actions')
-plt.ylabel('Reward')
-plt.show()
+#plt.plot(actions)
+#plt.plot()
+#plt.xlabel('Episode')
+#plt.ylabel('actions')
+#plt.ylabel('Reward')
+#plt.show()
 
 #event_nights = [i for i in range(len(rewards)) if env.event_night_count > 0]
 #non_event_nights = [i for i in range(len(rewards)) if i not in event_nights]
