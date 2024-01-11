@@ -51,9 +51,30 @@ for episode in range(0,2000):
     avg_rewards.append(np.mean(rewards[-10:]))
     epsilon = epsilon-0.01*episode
 
-print("Number of event nights:", env.get_event_night_count())
+print(f"Number of event nights: {env.get_event_night_count()} and Number of non-event nights: {env.get_non_event_night_count()}")
 
+#average_event_actions = np.mean(event_actions)
+#average_non_event_actions = np.mean(non_event_actions)
 
+#print(f"Average action for event nights: {average_event_actions}")
+
+non_event_actions = env.get_non_event_actions()
+print(f"Number of actions for non-event nights: {len(non_event_actions)}")
+
+if len(non_event_actions) > 0:
+    average_non_event_actions = np.mean(non_event_actions)
+    print(f"Average action for non-event nights: {average_non_event_actions}")
+else:
+    print("No actions recorded for non-event nights.")
+
+event_actions = env.get_event_actions()
+print(f"Number of actions for event nights: {len(event_actions)}")
+
+if len(event_actions) > 0:
+    average_event_actions = np.mean(event_actions)
+    print(f"Average action for event nights: {average_event_actions}")
+else:
+    print("No actions recorded for event nights.")
 
 #plt.plot(rewards)
 #plt.plot(avg_rewards)
@@ -64,5 +85,20 @@ plt.ylabel('actions')
 plt.ylabel('Reward')
 plt.show()
 
+#event_nights = [i for i in range(len(rewards)) if env.event_night_count > 0]
+#non_event_nights = [i for i in range(len(rewards)) if i not in event_nights]
 
+#event_actions = [actions[i] for i in event_nights]
+#non_event_actions = [actions[i] for i in non_event_nights]
+
+# Create box plots for event nights and non-event nights
+#plt.boxplot([non_event_actions, event_actions], labels=['Non-Event Nights', 'Event Nights'])
+
+# Set labels and title
+#plt.xlabel('Night Type')
+#plt.ylabel('Actions')
+#plt.title('Box Plot of Actions on Event and Non-Event Nights')
+
+# Show the plot
+#plt.show()
 

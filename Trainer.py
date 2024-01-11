@@ -42,7 +42,10 @@ class NormalizedEnv():
     """ Wrap action """
     
     def __init__(self):
-        self.event_night_count = 0  
+        self.event_night_count = 0
+        self.non_event_night_count = 0
+        self.event_actions = []  # List to store actions on event nights
+        self.non_event_actions = []  # List to store actions on non-event nights
         
     def _action(self, action):
         act_k = (self.action_space.high - self.action_space.low)/ 2.
@@ -76,29 +79,51 @@ class NormalizedEnv():
 #rewards = [reward + noise[idx] for idx, reward in enumerate(rewards)]
 
         
-    def step(self,action):
+    def step(self, action):
         
         self.event_night = np.random.choice([True, False], p=[1 / 7, 6 / 7])
         if self.event_night:
             self.event_night_count += 1
+        else:
+            self.non_event_night_count += 1
             
         individual_actions = list()
-        for i in range(0,100):
-            if random.uniform(0, 1) <= action:
-                individual_actions.append(1) # Go to the bar
+        for i in range(0, 100):
+            if self.event_night:
+                individual_actions.append(1)  # Go to the bar on event night
             else:
-                individual_actions.append(0) # Don't go to the bar 
-        new_state = 0 
+                if random.uniform(0, 1) <= action:
+                    individual_actions.append(1)  # Go to the bar on non-event night
+                else:
+                    individual_actions.append(0)  # Don't go to the bar on non-event night
+    
+        new_state = 0
         rewards_score = self.reward(individual_actions)
-        if self.event_night == True:  # Assuming once in every 7 days
+        if self.event_night:
             rewards_score += 2
         
-        done=True
-        return new_state, rewards_score,done
+        # Collect actions for both event and non-event nights
+        if self.event_night:
+            self.event_actions.append(action)
+        else:
+            self.non_event_actions.append(action)
+    
+        done = True
+        return new_state, rewards_score, done
+
 
     def get_event_night_count(self):
-        return self.event_night_count   
+        return self.event_night_count
 
+    def get_non_event_night_count(self):
+        return self.non_event_night_count
+
+    def get_event_actions(self):
+        return self.event_actions
+
+    def get_non_event_actions(self):
+        return self.non_event_actions
+    
 class Memory:
     def __init__(self, max_size):
         self.max_size = max_size
