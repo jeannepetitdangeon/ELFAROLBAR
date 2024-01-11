@@ -51,7 +51,7 @@ for episode in range(0,2000):
     avg_rewards.append(np.mean(rewards[-10:]))
     epsilon = epsilon-0.01*episode
 
-
+print("Number of event nights:", env.get_event_night_count())
 
 
 

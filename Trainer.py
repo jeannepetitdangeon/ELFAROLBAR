@@ -42,7 +42,7 @@ class NormalizedEnv():
     """ Wrap action """
     
     def __init__(self):
-        self.event_night = np.random.choice([True, False], p=[1/7, 6/7])  
+        self.event_night_count = 0  
         
     def _action(self, action):
         act_k = (self.action_space.high - self.action_space.low)/ 2.
@@ -57,41 +57,31 @@ class NormalizedEnv():
     def reward(self,individual_actions,optimal_crowd=60):
         crowd = sum(individual_actions)
         rewards = list()
-        if self.event_night:
-            if crowd == 0:
-                rewards = [-5 for i in range(0,100)]
-            elif crowd < 0.5 * optimal_crowd:
-                rewards= [-5 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 0.9 * optimal_crowd:
-                rewards = [1 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 1.1 * optimal_crowd:
-                rewards = [15 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 1.3 * optimal_crowd:
-                rewards = [1 if i ==1 else 0 for i in individual_actions]
-            else:
-                rewards = [-5 if i ==1 else 0 for i in individual_actions]
-            noise = np.random.normal(0, 1, len(rewards))  # Generating noise for each reward
-            rewards = [reward + noise[idx] for idx, reward in enumerate(rewards)]
+        if crowd == 0:
+            rewards = [-5 for i in range(0,100)]
+        elif crowd < 0.5 * optimal_crowd:
+            rewards= [-5 if i ==1 else 0 for i in individual_actions]
+        elif crowd < 0.9 * optimal_crowd:
+            rewards = [1 if i ==1 else 0 for i in individual_actions]
+        elif crowd < 1.1 * optimal_crowd:
+            rewards = [15 if i ==1 else 0 for i in individual_actions]
+        elif crowd < 1.3 * optimal_crowd:
+            rewards = [1 if i ==1 else 0 for i in individual_actions]
         else:
-            if crowd == 0:
-                rewards = [-5 for i in range(0,100)]
-            elif crowd < 0.5 * optimal_crowd:
-                rewards= [-5 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 0.9 * optimal_crowd:
-                rewards = [1 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 1.1 * optimal_crowd:
-                rewards = [15 if i ==1 else 0 for i in individual_actions]
-            elif crowd < 1.3 * optimal_crowd:
-                rewards = [1 if i ==1 else 0 for i in individual_actions]
-            else:
-                rewards = [-5 if i ==1 else 0 for i in individual_actions]
+            rewards = [-5 if i ==1 else 0 for i in individual_actions]    
         return sum(rewards)/100
     
 
-
+#noise = np.random.normal(0, 1, len(rewards))  # Generating noise for each reward
+#rewards = [reward + noise[idx] for idx, reward in enumerate(rewards)]
 
         
     def step(self,action):
+        
+        self.event_night = np.random.choice([True, False], p=[1 / 7, 6 / 7])
+        if self.event_night:
+            self.event_night_count += 1
+            
         individual_actions = list()
         for i in range(0,100):
             if random.uniform(0, 1) <= action:
@@ -106,7 +96,8 @@ class NormalizedEnv():
         done=True
         return new_state, rewards_score,done
 
-        
+    def get_event_night_count(self):
+        return self.event_night_count   
 
 class Memory:
     def __init__(self, max_size):
