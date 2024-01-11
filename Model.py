@@ -1,5 +1,5 @@
 import os
-os.chdir(r'C:\Users\samue\Documents\Université\M2 Unistra\RL\Farol-Bar-Problem-RL--main')
+os.chdir(r"C:\Users\samue\Documents\GitHub\ELFAROLBAR")
 
 import torch
 import torch.nn as nn
