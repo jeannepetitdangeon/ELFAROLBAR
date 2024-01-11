@@ -16,9 +16,12 @@ We also add an extension, considering there is an event every seven days, you ge
 
 ## Structure
 
-- In [Main](https://github.com/janoudetp/Programmation2023/blob/main/Slides.Rmd), you will find our code.
-- In [Graphs]
-- In [Paper](https://github.com/janoudetp/Programmation2023/blob/main/Programme.ipynb), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
+- In [Graphs](https://github.com/jeannepetitdangeon/ELFAROLBAR/tree/main/Graphs)
+- In [DDPG](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/DDPG.py)
+- In [Main](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Main.py), you will find our code.
+- In [Trainer](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Trainer.py)
+- In [Model](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/models.py)
+- In [Paper](), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
 
 ## Requirements 
 
