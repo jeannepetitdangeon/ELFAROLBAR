@@ -22,7 +22,7 @@ rewards = []
 actions=[]
 avg_rewards = []
 epsilon = 0.7
-for episode in range(0,2000):
+for episode in range(0,5000):
     state = np.array([0])
     #state = env.reset()
     #noise.reset()
@@ -89,14 +89,19 @@ event_episodes = np.arange(len(event_actions))
 non_event_episodes = np.arange(len(non_event_actions))
 
 # Create scatter plots for event and non-event nights with smaller dots
-plt.scatter(event_episodes, event_actions, marker='o', color='red', label='Event Nights', s=10)
-plt.scatter(non_event_episodes, non_event_actions, marker='x', color='blue', label='Non-Event Nights', s=10)
+plt.scatter(event_episodes, event_actions, marker='o', color='red', label='Event Nights', s=7)
+plt.scatter(non_event_episodes, non_event_actions, marker='x', color='blue', label='Non-Event Nights', s=7)
 
 # Set labels and title
+legend_entries = [
+    f'Event Nights (Avg: {average_event_actions:.5f}, Sum: {len(event_actions)})',
+    f'Non-Event Nights (Avg: {average_non_event_actions:.5f}, Sum: {len(non_event_actions)})'
+]
+
 plt.xlabel('Episode')
 plt.ylabel('Actions')
-plt.title('Scatter Plot of Actions on Event and Non-Event Nights')
-plt.legend()
+plt.title('Scatter Plot of Actions on Event and Non-Event Nights, +5 for event nights')
+plt.legend(legend_entries)
 
 # Show the plot
 plt.show()

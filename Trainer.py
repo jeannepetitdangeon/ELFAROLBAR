@@ -100,7 +100,7 @@ class NormalizedEnv():
         new_state = 0
         rewards_score = self.reward(individual_actions)
         if self.event_night:
-            rewards_score += 2
+            rewards_score += 5
         
         # Collect actions for both event and non-event nights
         if self.event_night:
