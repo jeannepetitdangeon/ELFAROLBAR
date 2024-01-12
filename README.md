@@ -21,7 +21,7 @@ We also add an extension, considering there is an event every seven days, you ge
 - In [Main](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Main.py), you will find the main code, linking every parts of the model. 
 - In [Trainer](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Trainer.py), you will find the part of our code that trains the agent. 
 - In [Model](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Model.py), you will find the part of our code defining the neural network architectures for the Critic and the Actor.
-- In [Paper](), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
+- In [Paper](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Paper.pdf), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
 
 ## Requirements 
 
