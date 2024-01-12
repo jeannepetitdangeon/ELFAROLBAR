@@ -16,11 +16,11 @@ We also add an extension, considering there is an event every seven days, you ge
 
 ## Structure
 
-- In [Graphs](https://github.com/jeannepetitdangeon/ELFAROLBAR/tree/main/Graphs)
-- In [DDPG](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/DDPG.py)
-- In [Main](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Main.py), you will find our code.
-- In [Trainer](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Trainer.py)
-- In [Model](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/models.py)
+- In [Graphs](https://github.com/jeannepetitdangeon/ELFAROLBAR/tree/main/Graphs), you will find every visual we made from the different tests we made by changing the reward function. 
+- In [DDPG](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/DDPG.py), you will find our code defining the DDPG agent with actor-critic networks and implementing the DDPG algorithm. 
+- In [Main](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Main.py), you will find the main code, linking every parts of the model. 
+- In [Trainer](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Trainer.py), you will find the part of our code that trains the agent. 
+- In [Model](https://github.com/jeannepetitdangeon/ELFAROLBAR/blob/main/Model.py), you will find the part of our code defining the neural network architectures for the Critic and the Actor.
 - In [Paper](), you will find our student paper, describing our model and the extension we add as well as our results and self critics. 
 
 ## Requirements 
